@@ -1,0 +1,51 @@
+#api call for create admin
+###
+POST http://127.0.0.1:8000/admin-register/
+Content-Type: application/json
+
+{
+    "username":"Admin",
+    "email":"admin@gmail.com",
+    "password":"admin@123"
+}
+
+#api call for list all turfs
+###
+GET  http://127.0.0.1:8000/turfs/
+Accept: application/json
+Authorization: Basic Admin:admin@123
+
+#api call for create turf
+###
+POST http://127.0.0.1:8000/turfs/
+Content-Type: application/json
+
+{
+    "name":"Victory Turf",
+    "location":"Ottapalam",
+    "phone":"8123456789",
+    "fee":600
+}
+
+#api call for fetch specific turf
+###
+GET  http://127.0.0.1:8000/turfs/2/
+Accept: application/json
+
+#api call for updating turf
+###
+PUT  http://127.0.0.1:8000/turfs/2/
+Content-Type: application/json
+
+{
+     "id": 2,
+    "name": "Power Play",
+    "location": "Thrissur",
+    "phone": "9567890123",
+    "fee": 900
+}
+
+#api call for deleting turf
+###
+DELETE  http://127.0.0.1:8000/turfs/5/
+Accept: application/json
