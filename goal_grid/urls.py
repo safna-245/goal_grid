@@ -17,10 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from kickora import views
+from playslot.views import BookingsListCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('admin-register/',views.AdminRegisterView.as_view()),
+
     path('turfs/',views.TurfListCreateView.as_view()),
     path('turfs/<int:pk>/',views.TurfRetrieveUpdateDeleteView.as_view()),
+
+    path('bookings/',BookingsListCreateView.as_view())
 ]
