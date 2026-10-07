@@ -66,6 +66,10 @@ class TurfListCreateView(APIView):
 
 class TurfRetrieveUpdateDeleteView(APIView):
 
+    authentication_classes=[authentication.BasicAuthentication]
+    
+    permission_classes = [permissions.IsAdminUser]
+
     def get(self,request,pk=None):
 
         qs = Turf.objects.get(id=pk)

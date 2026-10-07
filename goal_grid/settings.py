@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'kickora',
     'playslot',
+    'playslot_v2',
 ]
 
 MIDDLEWARE = [

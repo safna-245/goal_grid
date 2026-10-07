@@ -19,6 +19,7 @@ Authorization: Basic Admin:admin@123
 ###
 POST http://127.0.0.1:8000/turfs/
 Content-Type: application/json
+Authorization: Basic Admin:admin@123
 
 {
     "name":"Victory Turf",
@@ -31,27 +32,138 @@ Content-Type: application/json
 ###
 GET  http://127.0.0.1:8000/turfs/2/
 Accept: application/json
+Authorization: Basic Admin:admin@123
 
 #api call for updating turf
 ###
 PUT  http://127.0.0.1:8000/turfs/2/
 Content-Type: application/json
+Authorization: Basic Admin:admin@123
 
 {
      "id": 2,
     "name": "Power Play",
     "location": "Thrissur",
     "phone": "9567890123",
-    "fee": 900
+    "fee": 800
 }
 
 #api call for deleting turf
 ###
-DELETE  http://127.0.0.1:8000/turfs/5/
+DELETE  http://127.0.0.1:8000/turfs/6/
 Accept: application/json
+Authorization: Basic Admin:admin@123
+
+#bookings    
 
 
 #api call for list all bookings
 ###
 GET http://127.0.0.1:8000/bookings/
 Accept: application/json
+
+#api call for create new bookings
+###
+POST http://127.0.0.1:8000/bookings/
+Content-Type: application/json
+
+{
+
+    "booked_by":"Ramu",
+    "phone":"8734561288",
+    "date":"2026-12-02",
+    "turf":2,
+    "time":"10:00:00",
+    "duration":2
+
+
+}
+
+#api call for fetch specific booking
+###
+GET http://127.0.0.1:8000/bookings/2/
+Accept: application/json
+
+#api call for update specific booking
+###
+PUT http://127.0.0.1:8000/bookings/2/
+Content-Type: application/json
+
+{
+    "booked_by":"Raju",
+    "phone":"8734561288",
+    "date":"2026-12-02",
+    "turf":2,
+    "time":"10:00:00",
+    "duration":2
+ 
+}
+
+#api call for delete specific booking
+###
+DELETE http://127.0.0.1:8000/bookings/4/
+Accept: application/json
+
+#api call for create user
+###
+POST http://127.0.0.1:8000/v2/bookings/signup/
+Content-Type: application/json
+
+{
+    "username":"user1",
+    "email":"user56@gmail.com",
+    "password":"user@123"
+}
+
+
+#playslot_v2====
+
+#api call for list all bookings
+###
+GET http://127.0.0.1:8000/v2/bookings/booking/
+Accept: application/json
+Authorization: Basic user1:user@123
+
+#api call create a booking
+###
+POST http://127.0.0.1:8000/v2/bookings/booking/
+Content-Type: application/json
+Authorization: Basic user1:user@123
+
+{
+    "booked_by":"Jinu",
+    "phone":"6607069872",
+    "date":"2026-10-11",
+    "turf":3,
+    "time":"13:00:00",
+    "duration":2
+
+}
+
+#api call fpr retrive specific booking
+###
+GET http://127.0.0.1:8000/v2/bookings/booking/1/
+Accept: application/json
+Authorization: Basic user1:user@123
+
+#api call for update specific view
+###
+PUT http://127.0.0.1:8000/v2/bookings/booking/1/
+Content-Type: application/json
+Authorization: Basic user1:user@123
+
+{
+  "id": 1,
+  "turf": "Power Play",
+  "booked_by": "Arun",
+  "phone": "9234561289",
+  "date": "2026-10-10",
+  "time": "18:00:00",
+  "duration": 2
+}
+
+#api call for delete booking
+###
+DELETE http://127.0.0.1:8000/v2/bookings/booking/4/
+Accept: application/json
+Authorization: Basic user1:user@123

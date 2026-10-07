@@ -15,9 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from kickora import views
 from playslot.views import BookingsListCreateView
+from playslot.views import BookingsRetrieveUpdateDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,9 @@ urlpatterns = [
     path('turfs/',views.TurfListCreateView.as_view()),
     path('turfs/<int:pk>/',views.TurfRetrieveUpdateDeleteView.as_view()),
 
-    path('bookings/',BookingsListCreateView.as_view())
+    path('bookings/',BookingsListCreateView.as_view()),
+    path('bookings/<int:pk>/',BookingsRetrieveUpdateDeleteView.as_view()),
+
+    path('v2/bookings/',include("playslot_v2.urls")),
+    
 ]
