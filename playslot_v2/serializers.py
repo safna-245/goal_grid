@@ -16,7 +16,7 @@ class SignUpSerializer(serializers.ModelSerializer):
 
 class BookingSerializer(serializers.ModelSerializer):
 
-    turf = serializers.StringRelatedField()
+    # turf = serializers.StringRelatedField()
 
     class Meta:
 
@@ -31,10 +31,14 @@ class BookingSerializer(serializers.ModelSerializer):
         date = validated_data.get("date")
         time = validated_data.get("time")
         turf = validated_data.get("turf")
+        duration = validated_data.get("duration")
 
         if date < datetime.today().date():
             
             raise serializers.ValidationError("invalid date.date should be greater than current date")
+
+        if duration < 1:
+            raise serializers.ValidationError("Minimum booking duration is 1 hour.")
         
 
         bookings = Bookings_v2.objects.filter(date=date,turf=turf)
